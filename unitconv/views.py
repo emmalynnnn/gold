@@ -13,14 +13,18 @@ def index(request):
         response = {
             "error": "Invalid unit conversion request"
         }
-        return JsonResponse(response)
+        response = JsonResponse(response)
+        response['Access-Control-Allow-Origin'] = '*'
+        return response
 
     result = convert(fromParam, toParam, val)
     response = {
         "units": toParam,
         "value": result
     }
-    return JsonResponse(response)
+    response = JsonResponse(response)
+    response['Access-Control-Allow-Origin'] = '*'
+    return response
 
 def validate(frm, to, val):
     validUnits = ["T", "g", "t_oz", "kg", "lb", "oz"]

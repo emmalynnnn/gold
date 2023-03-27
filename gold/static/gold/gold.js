@@ -20,10 +20,24 @@ function calculate() {
         newD.onclick = function() { deleteRecord(parent, newD) }
 
         //TODO: convert weight to Troy Oz
-        //TODO: multiply by price of gold
+        let url = "http://localhost:8000/unitconv/convert/?from=" + from
+            +"&to=t_oz&value=" + weightInput;
+        fetch(url)
+            .then( response => response.json() )
+            .then( json => {
+                let theData = json;
+                //console.log(theData)
+                inTrOz = theData.value;
 
-        newP.textContent = weightInput + " " + from + " of gold is worth $____"
-        newP.style.textAlign = "center"
+                //console.log(inTrOz)
+
+                result = (inTrOz * price).toFixed(2);
+
+                newP.textContent = weightInput + " " + from + " of gold is worth $" + result
+                newP.style.textAlign = "center"
+            })
+
+
     }
 
     newD.appendChild(newP);
@@ -54,13 +68,16 @@ function validateInput(from, weightInput) {
 
 function getPrice() {
     let url = "https://data.nasdaq.com/api/v3/datasets/LBMA/GOLD/data.json?api_key=afHh9D4FGtELuouNAZ26&rows=1";
+    let priceDisplay = document.getElementById("priceDisplay");
     fetch(url)
         .then( response => response.json() )
         .then( json => {
             let theData = json;
             price = theData.dataset_data.data[0][1];
-            let priceDisplay = document.getElementById("priceDisplay");
             priceDisplay.innerHTML = "The current price of gold is " + price + " USD per Troy Oz"
+        })
+        .catch(err => {
+            priceDisplay.innerHTML = "The current price of gold cannot be retrieved. Check your network or come back later!"
         })
 }
 
