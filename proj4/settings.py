@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'gold.apps.GoldConfig',
-    'convert.apps.ConvertConfig',
+    'unitconv.apps.UnitconvConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,3 +1,4 @@
+
 function calculate() {
     let from = document.getElementById("from").value;
     let weightInput = document.getElementById("weightInput").value;
@@ -50,4 +51,19 @@ function validateInput(from, weightInput) {
 
     return toFloat;
 }
+
+function getPrice() {
+    let url = "https://data.nasdaq.com/api/v3/datasets/LBMA/GOLD/data.json?api_key=afHh9D4FGtELuouNAZ26&rows=1";
+    fetch(url)
+        .then( response => response.json() )
+        .then( json => {
+            let theData = json;
+            price = theData.dataset_data.data[0][1];
+            let priceDisplay = document.getElementById("priceDisplay");
+            priceDisplay.innerHTML = "The current price of gold is " + price + " USD per Troy Oz"
+        })
+}
+
+let price = -1;
+getPrice()
 

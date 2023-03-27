@@ -4,7 +4,7 @@ from django.db import migrations
 
 
 def populate_db(apps, schema_editor):
-    ConversionFactor = apps.get_model('convert', 'ConversionFactor')
+    ConversionFactor = apps.get_model('unitconv', 'ConversionFactor')
 
     T = ConversionFactor(name="T", to_pounds=2000)
     T.save()
@@ -23,7 +23,7 @@ def populate_db(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('convert', '0001_initial'),
+        ('unitconv', '0001_initial'),
     ]
 
     operations = [
