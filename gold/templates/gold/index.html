@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Worth Your Weight in Gold</title>
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'gold/style.css' %}">
+
+    </head>
+    <body>
+
+    {% include 'gold/nav.html' %}
+
+    <p id="token" hidden>{% csrf_token %}</p>
+
+    <div class="stuff-box red" id="createExpress">
+        <h2>Enter Your Weight to See Your Worth in Gold!</h2>
+
+        <input name="weightInput" id="weightInput" type="number">
+
+        <select name="from" id="from">
+            <option>lb</option>
+            <option>T</option>
+            <option>g</option>
+            <option>t_oz</option>
+            <option>kg</option>
+            <option>oz</option>
+        </select>
+
+        <button type="button" value="Calculate" onclick="calculate()">Calculate</button>
+
+        <p>Please Wait</p>
+
+    </div>
+
+    <div id="newCalcs">
+
+    </div>
+
+    <script src="{% static 'gold/gold.js' %}" type="text/javascript"></script>
+
+    </body>
+</html>

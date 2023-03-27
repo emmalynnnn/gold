@@ -1,0 +1,166 @@
+/* CSS comments look like this */
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid white;
+  background-color: #FFC3A1;
+    font-size: 20px;
+}
+
+.navList {
+   float: left;
+}
+
+/*li {
+  float: left;
+}*/
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+    background-color: #F0997D;
+}
+
+h1 {
+    color: #850E35;
+    font-family: "Big Caslon",monospace;
+    font-weight: bolder;
+}
+
+.title {
+    color: #850E35;
+    font-family: "Big Caslon",monospace;
+    font-weight: bolder;
+}
+
+p {
+    font-family: Baskerville,monospace;
+}
+
+img {
+    height: 250px
+}
+
+.nav-button {
+    padding: 2mm;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.sdp {
+    padding: 1mm;
+    margin: 3px;
+    border: 2px solid #0A2647;
+    font-family: Baskerville,monospace;
+}
+
+#main-photo {
+    border: 1px solid black;
+    padding: 2mm;
+    float: left;
+    margin: 5px;
+    height: 350px;
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.expression {
+background-color: rgba(0, 0, 0, .25);
+border-radius: 5px;
+border-style: 1px solid;
+border-color: #404040;
+/*padding: 3px;
+padding-bottom: 0px;
+/*font-family: monospace;*/
+    color: black;
+text-align: center;
+    text-shadow: 0px 0px 0px black;
+}
+
+nav > ol {
+display: flex;
+}
+
+nav > ol > li {
+flex: 1;
+}
+
+.disabled {
+color: grey;
+text-decoration: underline;
+}
+
+.close, button {
+margin-left: 0.5em;
+margin-right: 0.5em;
+}
+
+.stuff-box {
+border-radius: 10px;
+border-style: solid;
+border-width: 2px;
+color: white;
+cursor: pointer;
+font-family: "Big Caslon",monospace;
+letter-spacing: 1px;
+margin: 10px;
+padding: 3px 10px;
+text-align: center;
+text-shadow: 1px 1px 2px black;
+}
+
+.red, .subtraction {
+border-color: #F0997D;
+background: #D3756B;
+box-shadow: 1px 1px 2px #A75D5D;
+}
+
+.purple, .addition {
+border-color: #C85C8E;
+background: #9D3C72;
+box-shadow: 1px 1px 2px #7B2869;
+}
+
+.blue, .multiplication {
+border-color: #CBE4DE;
+background: #0E8388;
+box-shadow: 1px 1px 2px #2E4F4F;
+}
+
+.tan {
+border-color: #F9F5E7;
+background: #F8EAD8;
+box-shadow: 1px 1px 2px #EDDBC7;
+}
+
+.pink, .remainder {
+border-color: #FFC6D3;
+background: #FF8E9E;
+box-shadow: 1px 1px 2px #E98EAD;
+}
+
+.sun, .division {
+border-color: #DE834D;
+background: #A3423C;
+box-shadow: 1px 1px 2px #781D42;
+}
+
+.error,.exponentiation {
+border-color: #EEEEEE;
+background: #686D76;
+box-shadow: 1px 1px 2px #212121;
+}
+
+.lightblue, .modulo {
+border-color: #BDCDD6;
+background: #93BFCF;
+box-shadow: 1px 1px 2px #6096B4;
+}

@@ -5,12 +5,12 @@
         <title>Software Development Plan</title>
         {% load static %}
 
-        <link rel="stylesheet" href="{% static 'calc/style.css' %}">
+        <link rel="stylesheet" href="{% static 'gold/style.css' %}">
 
     </head>
     <body>
 
-    {% include 'calc/nav.html' %}
+    {% include 'gold/nav.html' %}
 
         <h2 class="title">Plan</h2>
 
@@ -50,7 +50,7 @@
 <ul>
     <li>Django app called unitconv</li>
     <li>Provides a web API for performing conversions between units of measure</li>
-    <li>Included a view called convert that responds to GET requests of the following form: <a data-fr-linked="true" href="http://localhost:8000/unitconv/convert?from=lb&">http://localhost:8000/unitconv/convert?from=lb&amp;amp</a>;to=t_oz&amp;value=3.14159<ul>
+    <li>Includes a view called convert that responds to GET requests of the following form: http://localhost:8000/unitconv/convert?from=lb&amp;to=t_oz&amp;value=3.14159<ul>
             <li>from is a string that identifies the type of unit the input value is of</li>
             <li>value is a non-negative float representing the number of from units</li>
             <li>to is a string specifying what type of units to be converted to</li>
