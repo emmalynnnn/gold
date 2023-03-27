@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Software Development Plan</title>
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'calc/style.css' %}">
+
+    </head>
+    <body>
+
+    {% include 'calc/nav.html' %}
+
+        <h2 class="title">Plan</h2>
+
+        <div class="stuff-box red">
+            <h3>Phase 0: Requirements Specification (20%)</h3>
+
+            <p>This assignment will be a Django-based API that will both produce and consume (from a 3rd party API - Nasdaq) data.</p>
+<ul>
+    <li>The app will send a request to receive the market value of gold (Troy Oz)</li>
+    <li>I will write a unit conversion API to convert between units of measure.</li>
+</ul>
+<p><br></p>
+<p>This will be a single page application. It will update its UI without reloading the page.</p>
+<ul>
+    <li>fetch() will be used to make async requests in the background</li>
+    <li>A GET request will be formed to get relevant data</li>
+    <li>Errors are handled gracefully</li>
+</ul>
+<p>A database-driven RESTful API will be created.</p>
+<ul>
+    <li>Responds to GET requests with survey parameters</li>
+    <li>JSON responses will be created and returned from Python-native data types</li>
+    <li>The API will be self-documenting with friendly error messages</li>
+</ul>
+<p>Data will be consumed from a 3rd party API.</p>
+<ul>
+    <li>An API key will be used for authentication</li>
+</ul>
+<p><br></p>
+<p>The project will be composed of two Django apps</p>
+<ul>
+    <li>A RESTful unit conversion API</li>
+    <li>A app with UI that used the unit conversion API</li>
+</ul>
+<p><br></p>
+<p>Unit conversion API</p>
+<ul>
+    <li>Django app called unitconv</li>
+    <li>Provides a web API for performing conversions between units of measure</li>
+    <li>Included a view called convert that responds to GET requests of the following form: <a data-fr-linked="true" href="http://localhost:8000/unitconv/convert?from=lb&">http://localhost:8000/unitconv/convert?from=lb&amp;amp</a>;to=t_oz&amp;value=3.14159<ul>
+            <li>from is a string that identifies the type of unit the input value is of</li>
+            <li>value is a non-negative float representing the number of from units</li>
+            <li>to is a string specifying what type of units to be converted to</li>
+        </ul>
+    </li>
+</ul>
+<p>The result of valid request: JSON with units and value</p>
+<ul>
+    <li>Value: non-negative float</li>
+    <li>Units: must match the to parameter of the request</li>
+</ul>
+<p>Invalid query response:</p>
+<ul>
+    <li>&quot;error&quot;: &quot;Invalid unit conversion request&quot;</li>
+</ul>
+<p>Calculations are made by consulting a table of conversion factors stored in a Django model.</p>
+<ul>
+    <li>Only one table is needed</li>
+    <li>Create data migration to initialize database with necessary unit conversion factors&nbsp;<ul>
+            <li>Only place where hardcoded conversions are allowed</li>
+        </ul>
+    </li>
+</ul>
+<p>Units that must be supported:</p>
+<ul>
+    <li>U.S. Ton T</li>
+    <li>Gram g</li>
+    <li>Troy Ounce t_oz</li>
+    <li>Kilogram kg</li>
+    <li>Imperial Pound lb</li>
+    <li>Ounce oz</li>
+</ul>
+<p>Conversions must be supported between all possible combos.</p>
+<p>Use the abbreviation listed above for the from and to parameters.</p>
+<p><br></p>
+<p>&ldquo;Worth your weight in gold&rdquo; single page app</p>
+<ul>
+    <li>Plain HTML files are allowed</li>
+    <li>Page must have the following HTML features<ul>
+            <li>h2 and title naming the page</li>
+            <li>Link to the SDP</li>
+            <li>&nbsp;Usage instructions</li>
+            <li>Numeric &lt;input&gt; to allow weight selection</li>
+            <li>&lt;select&gt; drop down to choose a unit of weight from the table conversion factors</li>
+            <li>&lt;button&gt; which performs conversion</li>
+            <li>&nbsp;&lt;p&gt; that displays the latest market price of gold<ul>
+                    <li>Before price retrieved, says &ldquo;Please Wait&rdquo;</li>
+                    <li>If price cannot be retrieved, informative error message</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Page automatically queries Nasdaq one time upon loading</li>
+    <li>Async GET request made using fetch()<ul>
+            <li>Include your API key and a limiting range</li>
+            <li>Store price in global var once found</li>
+        </ul>
+    </li>
+    <li>The button activates a callback function which:<ul>
+            <li>Reads the input field</li>
+            <li>Validates that the input is numeric<ul>
+                    <li>Displays error message if not</li>
+                </ul>
+            </li>
+            <li>Makes a fetch() request to the unitconv app that converts user&rsquo;s weight to troy oz</li>
+            <li>Calculates price of user&rsquo;s weight in gold</li>
+            <li>Creates new &lt;div&gt; under the input section to display the dollar amount to the user<ul>
+                    <li>Including timestamp</li>
+                    <li>New results appear above older results</li>
+                    <li>Clicking a div removes it from the DOM</li>
+                    <li>When an error occurs display timestamped error message</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+        </div>
+
+        <div class="stuff-box purple">
+            <h3>Phase 1: Design (30%)</h3>
+
+        </div>
+
+        <div class="stuff-box blue">
+            <h3>Phase 2: Implementation (15%)</h3>
+            <ul>
+                <li>...</li>
+            </ul>
+        </div>
+
+        <div class="stuff-box pink">
+            <h3>Phase 3: Testing & Debugging (30%)</h3>
+
+        </div>
+
+        <div class="stuff-box sun">
+            <h3>Phase 4: Deployment (5%)</h3>
+            <h4>Deliverables</h4>
+            <ul>
+                <li>Your repository pushed to GitLab.</li>
+                <li>Verify that your final commit was received by browsing to its project page on GitLab.</li>
+                <li>Ensure the project's URL is correct.</li>
+                <li>Review the project to ensure that all required files are present and in correct locations.</li>
+                <li>Check that unwanted files have not been included.</li>
+                <li>Make any final touches to documentation, including this Plan.</li>
+                <li>Validate that your submission is complete and correct by cloning it to a new location on your computer and re-running it.</li>
+                <li>Run your program from the command line (if applicable) so you can see how it will behave when your grader runs it.  Running it in PyCharm is not good enough!</li>
+                <li>Run through your test cases to avoid nasty surprises.</li>
+                <li>Check that your documentation files are all present.</li>
+            </ul>
+        </div>
+
+        <div class="stuff-box lightblue">
+            <h3>Phase 5: Maintenance</h3>
+            <ul>
+                <li>Some of my view functions are a little sloppy and repetitive, but for the most part I think things are okay.</li>
+                <li>I understand how everything I wrote works.
+                    I definitely don't understand exactly how Django does what it
+                    does, but I think that's part of using a framework- you don't
+                    need to know everything about it to use it.</li>
+                <li>If a bug is reported in a few months,
+                    I think I would be able to find the cause fairly quickly.
+                    Especially since I will have had more experience in this class by
+                    then, and be more comfortable with Django.</li>
+                <li>I think my documentation makes sense and that
+                    it will be comprehensible to both other people and myself in 6 months.</li>
+                <li>It would not be incredibly difficult to add a new feature because of Django's DRY mantra.</li>
+                <li>It should continue to work after upgrading
+                    the computer's hardware, operating system, Python, or the web browser.</li>
+                <li>Assignment Reflection has been filled out on Canvas.</li>
+            </ul>
+        </div>
+
+    </body>
+</html>
+
