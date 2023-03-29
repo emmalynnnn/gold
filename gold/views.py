@@ -4,8 +4,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 
+
 def index(request):
-    return render(request, 'gold/index.html', {})
+    current_datetime = timezone.now()
+    return render(request, 'gold/index.html', {'current_datetime': current_datetime})
 
 
 def plan(request):

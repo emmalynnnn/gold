@@ -39,13 +39,13 @@ def validate(frm, to, val):
         return -1
 
 def convert(frm, to, val):
-    conFactFrm = ConversionFactor.objects.get(name=frm).to_pounds
-    conFactTo = 1 / ConversionFactor.objects.get(name=to).to_pounds
+    conFactFrm = ConversionFactor.objects.get(name=frm).to_troy_oz
+    conFactTo = 1 / ConversionFactor.objects.get(name=to).to_troy_oz
 
     # print(f"Converting {val} {frm} to {to}")
-    lbs = val * conFactFrm
+    troyOz = val * conFactFrm
     # print(f"{val} {frm} is {lbs} lbs - with conversion factor {conFactFrm}")
-    result = lbs * conFactTo
+    result = troyOz * conFactTo
     # print(f"{lbs} lbs is {result} {to} - with conversion factor {conFactTo}")
 
     return result

@@ -4,4 +4,6 @@ CS 2610
 Emma Lynn
 
 ## TODO:
-* switch standard unit to troy oz
+* SDP
+* add time/date stamps
+  * Fix it :/

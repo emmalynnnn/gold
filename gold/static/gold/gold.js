@@ -19,24 +19,23 @@ function calculate() {
         newD.classList = "stuff-box purple"
         newD.onclick = function() { deleteRecord(parent, newD) }
 
-        //TODO: convert weight to Troy Oz
         let url = "http://localhost:8000/unitconv/convert/?from=" + from
             +"&to=t_oz&value=" + weightInput;
         fetch(url)
             .then( response => response.json() )
             .then( json => {
                 let theData = json;
-                //console.log(theData)
-                inTrOz = theData.value;
+                let inTrOz = theData.value;
 
-                //console.log(inTrOz)
+                let result = (inTrOz * price);
+                let roundedResult = Math.round((result) * 100) / 100;
+                let formattedResult = roundedResult.toLocaleString("en-US");
 
-                result = (inTrOz * price).toFixed(2);
+                let date = document.getElementById("date").value
 
-                newP.textContent = weightInput + " " + from + " of gold is worth $" + result
+                newP.textContent = date + ": " + weightInput + " " + from + " of gold is worth $" + formattedResult
                 newP.style.textAlign = "center"
             })
-
 
     }
 
@@ -74,10 +73,15 @@ function getPrice() {
         .then( json => {
             let theData = json;
             price = theData.dataset_data.data[0][1];
-            priceDisplay.innerHTML = "The current price of gold is " + price + " USD per Troy Oz"
+            let formattedPrice = price.toLocaleString("en-US");
+
+            let date = document.getElementById("date").value
+
+            priceDisplay.innerHTML = "The current price of gold is $" + formattedPrice + " per Troy Oz as of " + date;
         })
         .catch(err => {
             priceDisplay.innerHTML = "The current price of gold cannot be retrieved. Check your network or come back later!"
+            document.getElementById("calcButton").disabled = true;
         })
 }
 

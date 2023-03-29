@@ -28,9 +28,11 @@
             <option>oz</option>
         </select>
 
-        <button type="button" value="Calculate" onclick="calculate()">Calculate</button>
+        <button type="button" id="calcButton" value="Calculate" onclick="calculate()">Calculate</button>
 
         <p id="priceDisplay">Please Wait</p>
+
+        <input type="hidden" id="date" value="{{ current_datetime }}"></input>
 
     </div>
 
