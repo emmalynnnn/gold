@@ -37,6 +37,13 @@ function calculate() {
                 newP.textContent = time + ": " + weightInput + " " + from + " of gold is worth $" + formattedResult
                 newP.style.textAlign = "center"
             })
+            .catch(err => {
+                newD.classList = "stuff-box sun"
+                newD.onclick = function() { deleteRecord(parent, newD) }
+
+                newP.textContent = time + " - Error: unit conversion cannot be retrieved. Check your network or come back later!"
+                newP.style.textAlign = "center"
+        })
 
     }
 
@@ -81,7 +88,7 @@ function getPrice() {
         })
         .catch(err => {
             console.log(err)
-            priceDisplay.innerHTML = "The current price of gold cannot be retrieved. Check your network or come back later!"
+            priceDisplay.innerHTML = "The current price of gold cannot be retrieved. Check your network connection or come back later!"
             document.getElementById("calcButton").disabled = true;
         })
 }

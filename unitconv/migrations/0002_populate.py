@@ -6,7 +6,7 @@ from django.db import migrations
 def populate_db(apps, schema_editor):
     ConversionFactor = apps.get_model('unitconv', 'ConversionFactor')
 
-    T = ConversionFactor(name="T", to_troy_oz=32150)
+    T = ConversionFactor(name="T", to_troy_oz=29170)
     T.save()
     g = ConversionFactor(name="g", to_troy_oz=.0321507)
     g.save()

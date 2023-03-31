@@ -238,7 +238,7 @@ returns the result</pre>
 <ul>
     <li>The function should only receive good input because the input has already been validated</li>
 </ul>
-<p><br>Conversion factors:<br>Source - Google Unit Converter<br><br>T to_troy_oz = 32150<br>g to_troy_oz = .0321507<br>t_oz to_troy_oz = 1<br>kg to_troy_oz = 32.1507<br>lb to_troy_oz = 14.5833<br>oz to_troy_oz = .911458</p>
+<p><br>Conversion factors:<br>Source - Google Unit Converter<br><br>T to_troy_oz = 29170<br>g to_troy_oz = .0321507<br>t_oz to_troy_oz = 1<br>kg to_troy_oz = 32.1507<br>lb to_troy_oz = 14.5833<br>oz to_troy_oz = .911458</p>
 
         </div>
 
@@ -257,6 +257,8 @@ returns the result</pre>
 
         <div class="stuff-box pink">
             <h3>Phase 3: Testing & Debugging (30%)</h3>
+
+            <p>Things to test:<br><br>unitconv:<br><br>Invalid queries: NaN, missing information, misspelled url<br>&nbsp; &nbsp; Expected response: error response<br>&nbsp; &nbsp; Actual response: Everything works correctly, although when the initial value is negative, the conversion continues like normal which I&rsquo;m not sure about. That is what Google&rsquo;s conversion application does, however, so I think I&rsquo;m just going to leave it how it is.<br><br>Conversion between any of the supported units: lb to kg, oz to g, T to t_oz<br>&nbsp; &nbsp; Expected response: correct conversion<br>&nbsp; &nbsp; Actual response: Everything was correct except for T to t_oz<br>&nbsp; &nbsp; &nbsp; &nbsp; Bug fix: I accidentally used metric tons when I was retrieving the initial conversion factor<br>&nbsp; &nbsp; &nbsp; &nbsp; Everything now works correctly.<br><br><br>gold:<br><br>Invalid weight input:<br>&nbsp; &nbsp; Expected response: error response<br>&nbsp; &nbsp; Actual response: error message appears<br><br>Invalid unit input:<br>&nbsp; &nbsp; Expected response: error response<br>&nbsp; &nbsp; Actual response: error message appears<br><br>Failures of fetch() - nasdaq:<br>&nbsp; &nbsp; Expected response: error response<br>&nbsp; &nbsp; Actual response: error message displayed<br><br>Failures of fetch() - unticonv:<br>&nbsp; &nbsp; Expected response: error response<br>&nbsp; &nbsp; Actual response: empty div appears<br>&nbsp; &nbsp; &nbsp; &nbsp; Bug fix: added error handling in that fetch call<br>&nbsp; &nbsp; &nbsp; &nbsp; The error div now shows up<br><br></p>
         </div>
 
         <div class="stuff-box sun">
@@ -279,18 +281,13 @@ returns the result</pre>
         <div class="stuff-box lightblue">
             <h3>Phase 5: Maintenance</h3>
             <ul>
-                <li>Some of my view functions are a little sloppy and repetitive, but for the most part I think things are okay.</li>
-                <li>I understand how everything I wrote works.
-                    I definitely don't understand exactly how Django does what it
-                    does, but I think that's part of using a framework- you don't
-                    need to know everything about it to use it.</li>
+                <li>I think I've put this assignment together pretty well, I think I did a good job.</li>
+                <li>From doing the last assignment and projects I've done at work I have a pretty good handle on what is happening in this project</li>
                 <li>If a bug is reported in a few months,
-                    I think I would be able to find the cause fairly quickly.
-                    Especially since I will have had more experience in this class by
-                    then, and be more comfortable with Django.</li>
+                    I think I would be able to find the cause fairly quickly as this is a pretty simple application.</li>
                 <li>I think my documentation makes sense and that
                     it will be comprehensible to both other people and myself in 6 months.</li>
-                <li>It would not be incredibly difficult to add a new feature because of Django's DRY mantra.</li>
+                <li>It would not be incredibly difficult to add a new feature because of the way Django is set up and how simple the project is.</li>
                 <li>It should continue to work after upgrading
                     the computer's hardware, operating system, Python, or the web browser.</li>
                 <li>Assignment Reflection has been filled out on Canvas.</li>
