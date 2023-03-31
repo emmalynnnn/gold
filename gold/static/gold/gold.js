@@ -9,14 +9,17 @@ function calculate() {
     let newD = document.createElement('div');
     let newP = document.createElement('p');
 
+    let d = new Date();
+    let time = d.getHours() + ":" + d.getMinutes() + "." + d.getSeconds();
+
     if (valCode === -1) {
         newD.classList = "stuff-box sun"
         newD.onclick = function() { deleteRecord(parent, newD) }
 
-        newP.textContent = "Error: invalid input"
+        newP.textContent = time + " - Error: invalid input"
         newP.style.textAlign = "center"
     } else {
-        newD.classList = "stuff-box purple"
+        newD.classList = "stuff-box purple center-box"
         newD.onclick = function() { deleteRecord(parent, newD) }
 
         let url = "http://localhost:8000/unitconv/convert/?from=" + from
@@ -31,9 +34,7 @@ function calculate() {
                 let roundedResult = Math.round((result) * 100) / 100;
                 let formattedResult = roundedResult.toLocaleString("en-US");
 
-                let date = document.getElementById("date").value
-
-                newP.textContent = date + ": " + weightInput + " " + from + " of gold is worth $" + formattedResult
+                newP.textContent = time + ": " + weightInput + " " + from + " of gold is worth $" + formattedResult
                 newP.style.textAlign = "center"
             })
 
@@ -74,12 +75,12 @@ function getPrice() {
             let theData = json;
             price = theData.dataset_data.data[0][1];
             let formattedPrice = price.toLocaleString("en-US");
-
-            let date = document.getElementById("date").value
+            let date = document.getElementById("date").value;
 
             priceDisplay.innerHTML = "The current price of gold is $" + formattedPrice + " per Troy Oz as of " + date;
         })
         .catch(err => {
+            console.log(err)
             priceDisplay.innerHTML = "The current price of gold cannot be retrieved. Check your network or come back later!"
             document.getElementById("calcButton").disabled = true;
         })

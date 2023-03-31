@@ -63,6 +63,7 @@ img {
     font-family: Baskerville,monospace;
 }
 
+
 #main-photo {
     border: 1px solid black;
     padding: 2mm;
@@ -113,8 +114,11 @@ font-family: "Big Caslon",monospace;
 letter-spacing: 1px;
 margin: 10px;
 padding: 3px 10px;
-text-align: center;
 text-shadow: 1px 1px 2px black;
+}
+
+.center-box {
+    text-align: center;
 }
 
 .red, .subtraction {

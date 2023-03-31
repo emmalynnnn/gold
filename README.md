@@ -2,8 +2,3 @@
 CS 2610
 
 Emma Lynn
-
-## TODO:
-* SDP
-* add time/date stamps
-  * Fix it :/

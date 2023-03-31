@@ -42,10 +42,7 @@ def convert(frm, to, val):
     conFactFrm = ConversionFactor.objects.get(name=frm).to_troy_oz
     conFactTo = 1 / ConversionFactor.objects.get(name=to).to_troy_oz
 
-    # print(f"Converting {val} {frm} to {to}")
     troyOz = val * conFactFrm
-    # print(f"{val} {frm} is {lbs} lbs - with conversion factor {conFactFrm}")
     result = troyOz * conFactTo
-    # print(f"{lbs} lbs is {result} {to} - with conversion factor {conFactTo}")
 
     return result

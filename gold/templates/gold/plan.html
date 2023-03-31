@@ -133,18 +133,130 @@
         <div class="stuff-box purple">
             <h3>Phase 1: Design (30%)</h3>
 
+            <p>gold App:<br><br></p>
+<pre>calculate():
+&quot;&quot;&quot;
+Function to calculate the price of a given weight of gold
+Input: takes input from the DOM
+Output: adds new div to the DOM showing result of calculation
+&quot;&quot;&quot;
+gets the input weight and unit from the DOM
+validateInput(from, weightInput)
+fetch(unitconv url using input weight and unit, to troy oz)
+    .then(convert to JSON)
+    .then(
+        get the value in troy oz from the JSON response
+        multiplies troy oz with the current price of gold
+        creates new div and p to display the new price
+        adds to the DOM )</pre>
+<ul>
+    <li>With good input: displays the calculated price by adding it to the DOM</li>
+    <li>With bad input: displays an error message</li>
+</ul>
+<pre>
+validateInput(from, weightInput):
+&ldquo;&rdquo;&rdquo;
+Function to validate the client&rsquo;s input weight and unit
+Input: the weight and unit
+Output: true if the input is valid, false if not
+&ldquo;&rdquo;&rdquo;
+checks to see if the unit is one of the supported units
+checks to make sure the weight is not just an empty string
+tries converting the weight to a float
+checks if the result is NaN or is negative
+returns true if the input passes all the conditions</pre>
+<ul>
+    <li>With good input: returns true</li>
+    <li>With bad input: returns false</li>
+</ul>
+<p><br></p>
+<pre>
+getPrice():
+&ldquo;&rdquo;&rdquo;
+Function to retrieve the current price of gold, called when the page loads
+Input: n/a
+Output: displays the current price of gold on the DOM
+&ldquo;&rdquo;&rdquo;
+fetch(https://data.nasdaq.com/api/v3/datasets/LBMA/GOLD/data.json?api_key=afHh9D4FGtELuouNAZ26&amp;rows=1)
+    .then(converts response to JSON)
+    .then(
+        gets the price in USD from the JSON - I&rsquo;ll use the AM price
+        adds the price to the DOM to display to the user )
+    .catch(
+        displays an error message - the price of gold cannot be retrieved )</pre>
+<ul>
+    <li>With good input: n/a - no input taken</li>
+    <li>With bad input: n/a - no input taken</li>
+</ul>
+<p><br><br>unitconv app:</p>
+<pre>
+index(request):
+&ldquo;&rdquo;&rdquo;
+Function to respond to requests to the API
+Input: the value to convert, the unit to convert from, the unit to convert to
+Output: JSON response holding converted value
+&ldquo;&rdquo;&rdquo;
+if ! validate(from, to, value):
+    response = {&quot;error&quot;: &quot;Invalid unit conversion request&rdquo;}
+    return response as JSON
+result = convert(from, to, value)
+response = {&ldquo;units&rdquo;: to, &ldquo;value&rdquo;: result}
+return response as JSON</pre>
+<ul>
+    <li>With good input: sends a helpful response</li>
+    <li>With bad input: sends a less helpful error message but that&rsquo;s what you get for giving bad input I guess</li>
+</ul>
+<pre>
+
+validate(from, to, value):
+&ldquo;&rdquo;&rdquo;
+Function to validate conversion input
+Input: the value to convert, the unit to convert from, the unit to convert to
+Output: true if good input, false if bad
+&ldquo;&rdquo;&rdquo;
+checks to see if the units are in the supported units
+checks to make sure the weight is not just an empty string
+tries converting the weight to a float - returns false if ValueError is caught
+returns true if the input passes all the conditions</pre>
+<ul>
+    <li>With good input: returns true</li>
+    <li>With bad input: returns false</li>
+</ul>
+<pre>
+
+convert(from, to, value):
+&ldquo;&rdquo;&rdquo;
+Function to convert the value to the correct new unit
+Input: the value to convert, the unit to convert from, the unit to convert to
+Output: the result of the conversion
+&ldquo;&rdquo;&rdquo;
+gets the conversion factor from from to troy oz
+gets 1/the conversion factor from to to troy oz
+converts value from from to troy oz
+converts the result of that from troy oz to to
+returns the result</pre>
+<ul>
+    <li>The function should only receive good input because the input has already been validated</li>
+</ul>
+<p><br>Conversion factors:<br>Source - Google Unit Converter<br><br>T to_troy_oz = 32150<br>g to_troy_oz = .0321507<br>t_oz to_troy_oz = 1<br>kg to_troy_oz = 32.1507<br>lb to_troy_oz = 14.5833<br>oz to_troy_oz = .911458</p>
+
         </div>
 
         <div class="stuff-box blue">
             <h3>Phase 2: Implementation (15%)</h3>
             <ul>
-                <li>...</li>
+                <li>The implementation of the gold app has gone pretty well, I have everything working except for making
+                the call to the unitconv application.</li>
+                <li>The unitconv application was actually not as difficult as I thought it might be to implement, it
+                    is now functional (including the data migration).</li>
+                <li>I have now attached the unitconv app to the gold app and everything seems to be working.</li>
+                <li>I have decided it will be better to have the intermediary unit be troy oz, not pounds, since that's what we'll be converting
+                to the most in the gold app and have updated my models, data migration, and plan accordingly.</li>
             </ul>
         </div>
 
         <div class="stuff-box pink">
             <h3>Phase 3: Testing & Debugging (30%)</h3>
-
         </div>
 
         <div class="stuff-box sun">
